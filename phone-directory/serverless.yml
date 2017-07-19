@@ -1,0 +1,85 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: serverless-rest-api
+
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:DescribeTable
+        - dynamodb:Query 
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:us-east-1:*:table/contacts"
+
+functions:
+  create:
+    handler: phone-directory/create.create
+    events:
+    - http:
+        path: phone-directory
+        method: post
+        cors: true
+  list:
+    handler: phone-directory/list.list
+    events:
+    - http:
+        path: phone-directory
+        method: get
+        cors: true
+  get:
+    handler: phone-directory/get.get
+    events:
+    - http:
+        path: phone-directory/{id}
+        method: get
+        cors: true
+  update:
+    handler: phone-directory/update.update
+    events:
+    - http:
+        path: phone-directory/{id}
+        method: put
+        cors: true
+  delete:
+    handler: phone-directory/delete.delete
+    events:
+    - http:
+        path: phone-directory/{id}
+        method: delete
+        cors: true
+
+resources:
+  Resources:
+    PhoneDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: 'contacts'
