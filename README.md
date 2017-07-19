@@ -12,11 +12,11 @@ First of all you need to set up your aws console and install serverless framewor
 
 Once you're familiar with the basic serverless set up, I have included basic rest api example for Phone directory. 
 This is very stright forward and do these operations basically CRUD
-- GET - It will fetch all the records from table  [List Function]()
-- GET by Id - Get particular record from table [Get Function]()
-- PUT - Update particular record to table [Update Function]()
-- POST - Add data to table [Create Function]()
-- DELETE - Delete particular record from table [Delete Function]() 
+- GET - It will fetch all the records from table  [List Function](https://github.com/imrvshah/REST-api-with-serverless-aws-dynamoDB/blob/master/phone-directory/list.js)
+- GET by Id - Get particular record from table [Get Function](https://github.com/imrvshah/REST-api-with-serverless-aws-dynamoDB/blob/master/phone-directory/get.js)
+- PUT - Update particular record to table [Update Function](https://github.com/imrvshah/REST-api-with-serverless-aws-dynamoDB/blob/master/phone-directory/update.js)
+- POST - Add data to table [Create Function](https://github.com/imrvshah/REST-api-with-serverless-aws-dynamoDB/blob/master/phone-directory/create.js)
+- DELETE - Delete particular record from table [Delete Function](https://github.com/imrvshah/REST-api-with-serverless-aws-dynamoDB/blob/master/phone-directory/delete.js) 
 
 # Setup 
 
@@ -50,11 +50,11 @@ region: us-east-1
 api keys:
   None
 endpoints:
-  POST - https://jlt96su3ub.execute-api.us-east-1.amazonaws.com/dev/phone-directory
-  GET - https://jlt96su3ub.execute-api.us-east-1.amazonaws.com/dev/phone-directory
-  GET - https://jlt96su3ub.execute-api.us-east-1.amazonaws.com/dev/phone-directory/{id}
-  PUT - https://jlt96su3ub.execute-api.us-east-1.amazonaws.com/dev/phone-directory/{id}
-  DELETE - https://jlt96su3ub.execute-api.us-east-1.amazonaws.com/dev/phone-directory/{id}
+  POST - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/phone-directory
+  GET - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/phone-directory
+  GET - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/phone-directory/{id}
+  PUT - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/phone-directory/{id}
+  DELETE - https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/phone-directory/{id}
 functions:
   create: serverless-rest-api-dev-create
   list: serverless-rest-api-dev-list
@@ -69,7 +69,7 @@ How to Test/Use created endpoints
 # Create Contact 
 
 ```
- curl -X POST https://jlt96su3ub.execute-api.us-east-1.amazonaws.com/dev/phone-directory --data '{"name":"Ravi","phone":123456789}'
+ curl -X POST https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/phone-directory --data '{"name":"Ravi","phone":123456789}'
 ```
 
 output 
@@ -81,7 +81,7 @@ output
 # Get Contact list
 
 ```
-curl https://jlt96su3ub.execute-api.us-east-1.amazonaws.com/dev/phone-directory
+curl https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/phone-directory
 ```
 
 output
@@ -93,7 +93,7 @@ output
 # Get Contact by Id 
 
 ```
-curl https://jlt96su3ub.execute-api.us-east-1.amazonaws.com/dev/phone-directory/c7fd06d0-68e4-11e7-993a-5b9d3376ae04
+curl https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/phone-directory/c7fd06d0-68e4-11e7-993a-5b9d3376ae04
 ```
 
 output 
@@ -105,7 +105,7 @@ output
 # Update Contact 
 
 ```
-curl -X PUT https://jlt96su3ub.execute-api.us-east-1.amazonaws.com/dev/phone-directory/c7fd06d0-68e4-11e7-993a-5b9d3376ae04 --data '{"name": "imrvshah", "phone":1111111111}'
+curl -X PUT https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/phone-directory/c7fd06d0-68e4-11e7-993a-5b9d3376ae04 --data '{"name": "imrvshah", "phone":1111111111}'
 ```
 
 no output 
@@ -113,7 +113,7 @@ no output
 # Delete Contact 
 
 ```
-curl -X DELETE  https://jlt96su3ub.execute-api.us-east-1.amazonaws.com/dev/phone-directory/c7fd06d0-68e4-11e7-993a-5b9d3376ae04
+curl -X DELETE  https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/phone-directory/c7fd06d0-68e4-11e7-993a-5b9d3376ae04
 ```
 
 output 
